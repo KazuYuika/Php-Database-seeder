@@ -19,7 +19,8 @@ $selectedDatabase = isset($_GET['databases']) ? $_GET['databases'] : null;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Windmill Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
 
@@ -29,16 +30,17 @@ $selectedDatabase = isset($_GET['databases']) ? $_GET['databases'] : null;
 
 <body>
     <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
-          <!-- Desktop sidebar -->
-       <?php require_once 'components/sidebar.php';?>
-       <div class="flex flex-col flex-1 w-full">
+        <!-- Desktop sidebar -->
+        <?php require_once 'components/sidebar.php';?>
+        <div class="flex flex-col flex-1 w-full">
             <!-- Header -->
-<?php require_once 'components/header.php';?>
+            <?php require_once 'components/header.php';?>
 
             <main class="h-full overflow-y-auto">
-            <div class="container grid px-6 mx-auto">
-
-            </div>
+                <div class="container grid px-6 mx-auto">
+<!-- Create table form for database -->
+              
+                </div>
             </main>
         </div>
     </div>
