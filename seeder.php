@@ -9,21 +9,6 @@ class DatabaseSeeder {
         $this->faker = Faker\Factory::create();
     }
 
-    // Map MySQL column types to Faker formatters
-    private function getFakerData($type) {
-        switch ($type) {
-            case 'int':
-            case 'int(11)':
-                return $this->faker->randomNumber(9, true); // Generates a number with 9 digits
-            case 'varchar':
-            case 'varchar(255)':
-                return $this->faker->text(255);
-            // Add more mappings as needed
-            default:
-                throw new InvalidArgumentException("Unknown formatter for MySQL type: {$type}");
-        }
-    }
-
     public function seed($table, $fields, $numberOfEntries) {
         $fieldNames = implode(', ', array_keys($fields));
         $fieldValues = implode(', ', array_fill(0, count($fields), '?'));
@@ -34,7 +19,7 @@ class DatabaseSeeder {
         for ($i = 0; $i < $numberOfEntries; $i++) {
             $values = [];
             foreach ($fields as $field => $type) {
-                $values[] = $this->getFakerData($type);
+                $values[] = $this->faker->$type;
             }
             $stmt->bind_param(str_repeat('s', count($fields)), ...$values);
             $stmt->execute();

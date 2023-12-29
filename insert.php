@@ -24,19 +24,21 @@ if (isset($_POST['submit'])) {
     $seeder = new DatabaseSeeder($db);
 
     $fields = [];
-
-    // Get the list of fields for the selected table
-    $result = $db->query("DESCRIBE $selectedTable");
-
-    while ($row = $result->fetch_assoc()) {
-        $fields[$row['Field']] = $row['Type'];
+    foreach ($_POST as $key => $value) {
+        if (strpos($key, 'type_') === 0) { // Check if the POST key starts with 'type_'
+            $fieldName = substr($key, 5); // Extract the field name
+            $fields[$fieldName] = $value; // Use the selected type from the form
+        }
     }
+
+   
 
     // Populate the table with the specified number of entries
     $seeder->seed($selectedTable, $fields, $numberOfEntries);
 
     $db->close();
 
+    header('Location: home.php');
 
 }
 
