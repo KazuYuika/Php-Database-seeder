@@ -1,15 +1,4 @@
-<?php
-require_once 'vendor/autoload.php';
-require_once 'seeder.php';
-session_start();
-
-$host = $_SESSION['host'];
-$user = $_SESSION['user'];
-$pass = $_SESSION['pass'];
-$selectedDatabase = isset($_GET['databases']) ? $_GET['databases'] : null;
-$db = new mysqli($host, $user, $pass, $selectedDatabase);       
-
-?>
+<?php require_once 'api/session.php';?>
 
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en" class="theme-dark">
 
@@ -36,12 +25,55 @@ $db = new mysqli($host, $user, $pass, $selectedDatabase);
 
             <main class="h-full overflow-y-auto">
                 <div class="container grid px-6 mt-10 mx-auto">
-                    
+
+                    <!-- sql code html for selecting table "select * from table" -->
+                    <code
+                        class="text-lime-600 dark:text-lime-400 my-3 bg-gray-700 p-2">" SELECT * FROM <?php echo $selectedTable;?>; "</code>
+
+                    <!-- Show the Table data in a flowbite table style based on the php get -->
+                    <?php if ($selectedTable) {?>
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <thead
+                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <?php 
+                                    // show the table columns in the table header
+                                    $sql = "SHOW COLUMNS FROM $selectedTable";
+                                    $response = $db->query($sql);
+                                    while ($row = $response->fetch_assoc()) {
+                                        echo "<th scope='col' class='px-6 py-3'>". $row['Field']. "</th>";
+                                    }
+                                    ?>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <?php 
+                            // show the table data in the table body
+                            $sql = "SELECT * FROM $selectedTable";
+                            $response = $db->query($sql);
+                            while ($row = $response->fetch_assoc()) {
+                                echo '<tr
+                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">';
+                                foreach ($row as $key => $value) {
+                                    echo "<td class='px-4 py-3'>". $value. "</td>";
+                                }
+                                echo "</tr>";
+                            }
+                            ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <?php }?>
+
+
                 </div>
             </main>
         </div>
     </div>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 
 </body>

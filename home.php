@@ -1,16 +1,5 @@
 <?php
-require_once 'vendor/autoload.php';
-require_once 'seeder.php';
-session_start();
-
-$host = $_SESSION['host'];
-$user = $_SESSION['user'];
-$pass = '';
-$pass = $_SESSION['pass'];
-
-$db = new mysqli($host, $user, $pass);
-$selectedDatabase = isset($_GET['databases']) ? $_GET['databases'] : null;
-
+require_once 'api/session.php';
 ?>
 
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en" class="theme-dark">

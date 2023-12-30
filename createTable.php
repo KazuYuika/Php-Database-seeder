@@ -1,15 +1,4 @@
-<?php
-require_once 'vendor/autoload.php';
-require_once 'seeder.php';
-session_start();
-
-$host = $_SESSION['host'];
-$user = $_SESSION['user'];
-$pass = $_SESSION['pass'];
-$selectedDatabase = isset($_GET['databases']) ? $_GET['databases'] : null;
-$db = new mysqli($host, $user, $pass, $selectedDatabase);       
-
-?>
+<?php require_once 'api/session.php';?>
 
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en" class="theme-dark">
 
@@ -60,7 +49,7 @@ $db = new mysqli($host, $user, $pass, $selectedDatabase);
                     
                     ?>
 
-                    <h1 class="text-xl font-bold">Create Table</h1>
+                    <h1 class="text-xl font-bold ">Create Table</h1>
 
                     <form class="w-full mx-auto" action="api/sqlCreateTable.php" method="POST">
                         <input type="text" name="selectedDatabase" id="selectedDatabase"
