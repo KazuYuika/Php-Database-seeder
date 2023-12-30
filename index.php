@@ -46,7 +46,6 @@ $db = new mysqli($host, $user, $pass);
     <script src="../assets/js/init-alpine.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 
 </head>
 
@@ -109,6 +108,7 @@ $db = new mysqli($host, $user, $pass);
         </div>
     </div>
 
+    <script src="js/flowbite-2-2-1.js"></script>
 
 </body>
 

@@ -9,11 +9,12 @@ require_once 'api/session.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Windmill Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwindcss.js"></script>
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
 
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.24/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+
     <script src="//unpkg.com/alpinejs" defer></script>
 
 <body>
@@ -121,10 +122,6 @@ require_once 'api/session.php';
                                         </select>
                                     </div>
                                 </div>
-
-
-
-
                         <?php }
                         } ?>
                         <input type="text" value="<?php echo $selectedDatabase; ?>" name="selectedDatabase" hidden>
@@ -167,7 +164,8 @@ require_once 'api/session.php';
             this.form.submit();
         });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+   
+    <script src="js/flowbite-2-2-1.js"></script>
 
 </body>
 

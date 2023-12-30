@@ -31,13 +31,10 @@ if (isset($_POST['submit'])) {
         }
     }
 
-   
-
     // Populate the table with the specified number of entries
     $seeder->seed($selectedTable, $fields, $numberOfEntries);
 
     $db->close();
-
     header('Location: home.php');
 
 }
