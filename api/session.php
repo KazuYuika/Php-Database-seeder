@@ -1,4 +1,9 @@
 <?php
+// Turn off all error reporting
+error_reporting(0);
+
+// Do not display errors (they can still be logged to the server's error log file)
+ini_set('display_errors', '0');
 require_once 'vendor/autoload.php';
 require_once 'seeder.php';
 session_start();
